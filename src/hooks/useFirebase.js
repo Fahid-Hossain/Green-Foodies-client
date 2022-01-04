@@ -56,6 +56,23 @@ const useFirebase = () => {
           }).finally(() => setIsLoading(false));
       };
 
+    // Observer user on auth change
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setUser(user);
+            getIdToken(user)
+            .then(idToken =>{
+              setToken(idToken);
+            })
+          } 
+          else {
+            setUser({})
+          }
+          setIsLoading(false);
+        });
+      }, [auth, user]);
+
     return {registerUser, emailSignIn, googleSignIn, error, isLoading};
 };
 
