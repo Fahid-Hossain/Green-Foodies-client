@@ -3,7 +3,7 @@ import firebaseConfig from "./firebase.config";
 
 // Initialize Firebase
 const firebaseInitialize= ()=>{
-    initializeApp(firebaseConfig);
+   return initializeApp(firebaseConfig);
 } 
 
 export default firebaseInitialize;
