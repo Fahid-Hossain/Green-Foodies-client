@@ -3,9 +3,9 @@ import './Register.css';
 
 const Register = () => {
     return (
-        <div>
+        <Container>
             
-        </div>
+        </Container>
     );
 };
 
