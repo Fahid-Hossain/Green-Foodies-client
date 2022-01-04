@@ -9,7 +9,6 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     const [authError, setAuthError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    const [admin, setAdmin] = useState(false);
     const [token, setToken] = useState('');
 
     const googleProvider = new GoogleAuthProvider();
@@ -86,7 +85,7 @@ const useFirebase = () => {
           .finally(() => setIsLoading(false));
       };
 
-    return {registerUser, emailSignIn, googleSignIn, logOut, error, isLoading};
+    return {registerUser, emailSignIn, googleSignIn, logOut, user, error, authError, isLoading, token};
 };
 
 export default useFirebase;
