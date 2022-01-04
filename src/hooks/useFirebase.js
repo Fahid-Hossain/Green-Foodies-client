@@ -34,9 +34,29 @@ const useFirebase = () => {
           setAuthError(error.message);
         })
         .finally(() => setIsLoading(false));
-    }
+    };
 
-    return {registerUser, error, isLoading}
+    // email sign in 
+    const emailSignIn = (email, password) =>{
+        return signInWithEmailAndPassword(auth, email , password);
+      };
+
+    // Google sign in
+    const googleSignIn = (location, navigate) => {
+        setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+          .then((result) => {
+            const user = result.user;
+            saveUser(user.email, user.displayName, 'PUT');
+            setAuthError('');
+            const destination = location?.state?.from || '/';
+            navigate(destination);
+          }).catch((error) => {
+            setAuthError(error.message);
+          }).finally(() => setIsLoading(false));
+      };
+
+    return {registerUser, emailSignIn, googleSignIn, error, isLoading};
 };
 
 export default useFirebase;
