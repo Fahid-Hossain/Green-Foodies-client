@@ -12,6 +12,7 @@ const Navigation = () => {
     <Nav className="ms-auto">
       <Nav.Link to="/home">Home</Nav.Link>
       <Nav.Link to="/foods">Foods</Nav.Link>
+      <Nav.Link to="/order">Order</Nav.Link>
     </Nav>
   </Navbar.Collapse>
   </Container>
