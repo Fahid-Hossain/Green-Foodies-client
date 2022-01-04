@@ -8,7 +8,7 @@ const Login = () => {
         <Container className="my-5">
             <div className="login-form-container border border-1">
                 <div className="page-title text-center">
-                    Login
+                    Login page
                 </div>
                 <p>Login using social network</p>
                 <GoogleButton className="mx-auto mb-4" />
