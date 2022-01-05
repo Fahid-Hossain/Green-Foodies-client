@@ -6,7 +6,7 @@ import useAuth from '../../hooks/useAuth';
 import './Register.css';
 
 const Register = () => {
-    const {googleSignIn, registerUser}=useAuth();
+    const {googleSignIn, registerUser, error}=useAuth();
     const [registerDetails, setRegisterDetails] = useState({
       name : "",
       email: "",
@@ -83,6 +83,9 @@ const Register = () => {
                 <Button className="login-register-btn" variant="primary" type="submit">
                     Register
                 </Button>
+                {
+                  error && <p>{error}</p>
+                }
                 </form>
                 <p className="mt-3"><b>Join us using social network</b></p>
              <GoogleButton onClick={handleGoogleSignIn} className="mx-auto mb-4" />
