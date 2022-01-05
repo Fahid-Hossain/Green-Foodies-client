@@ -28,6 +28,7 @@ const Register = () => {
     };
     const handleRegisterSubmit = (e) =>{
       e.preventDefault();
+      console.log(registerDetails);
       if(registerDetails.password === registerDetails.password2){
           registerUser(registerUser.email, registerUser.password, registerUser.name, history);
       }
