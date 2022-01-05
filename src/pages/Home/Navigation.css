@@ -1,0 +1,8 @@
+.navlink{
+    color: white;
+    text-decoration:none;
+    margin-right: 15px;
+}
+.navlink:hover{
+    color: rgb(190, 175, 175);
+}

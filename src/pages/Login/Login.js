@@ -2,8 +2,10 @@ import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import './Login.css';
 import GoogleButton from 'react-google-button';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+    const { googleSignIn } = useAuth();
     return (
         <Container className="my-5">
             <div className="login-form-container border border-1">
@@ -11,7 +13,7 @@ const Login = () => {
                     Login page
                 </div>
                 <p>Login using social network</p>
-                <GoogleButton className="mx-auto mb-4" />
+                <GoogleButton onClick={googleSignIn} className="mx-auto mb-4" />
                 <p>Or insert your account information : </p>
                 <form action="">
                 <Form.Group className="mb-3" controlId="formBasicEmail">

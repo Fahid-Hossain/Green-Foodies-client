@@ -1,7 +1,11 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import "./Navigation.css"
 
 const Navigation = () => {
+  const { user,logOut } = useAuth();
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
@@ -10,11 +14,15 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link to="/home">Home</Nav.Link>
-              <Nav.Link to="/foods">Foods</Nav.Link>
-              <Nav.Link to="/orders">Orders</Nav.Link>
-              <Nav.Link to="/register">Register</Nav.Link>
-              <Nav.Link to="/login">Login</Nav.Link>
+              <NavLink className="navlink" to="/home">Home</NavLink>
+              <NavLink className="navlink" to="/foods">Foods</NavLink>
+              <NavLink className="navlink" to="/orders">Orders</NavLink>
+              {
+              user?.email ? <Button onClick={logOut} className="my-0" variant="warning" size="sm">
+              Logout
+            </Button> : <><NavLink className="navlink" to="/register">Register</NavLink>
+              <NavLink className="navlink" to="/login">Login</NavLink></>
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>
