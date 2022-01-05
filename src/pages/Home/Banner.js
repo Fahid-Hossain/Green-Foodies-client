@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import "./Banner.css"
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -13,12 +14,12 @@ const Banner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption className="carousel-caption">
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <div className="carousel-btn">
-                        <button className="btn btn-primary">Our Foods</button>
-                        <button className="btn btn-success mx-2">Get Order</button>
-                    </div>
+                        <h3>We Make Healthy</h3>
+                        <p>Homemade natural and fresh healthy food we provide which is certified by World Health Organizations.</p>
+                        <div className="carousel-btn">
+                            <Link to="/foods"><button className="btn btn-primary">Our Foods</button></Link>
+                            <Link to="/"><button className="btn btn-success mx-2">Get Order</button></Link>
+                        </div>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel-item" interval={500}>
@@ -28,13 +29,13 @@ const Banner = () => {
                         alt="Second slide"
                     />
                     <Carousel.Caption className="carousel-caption">
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>Yummy &</h3>
+                        <p>Our natural delicious foods gives you a variety of Yummy taste.</p>
 
                         <div className="carousel-btn">
-                        <button className="btn btn-primary">Our Foods</button>
-                        <button className="btn btn-success mx-2">Get Order</button>
-                    </div>
+                            <Link to="/foods"><button className="btn btn-primary">Our Foods</button></Link>
+                            <Link to="/"><button className="btn btn-success mx-2">Get Order</button></Link>
+                        </div>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="carousel-item">
@@ -44,13 +45,13 @@ const Banner = () => {
                         alt="Third slide"
                     />
                     <Carousel.Caption className="carousel-caption">
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        
+                        <h3>Testy Foods</h3>
+                        <p>Praesent cursus magna, vel scelerisque is testy all over the green Foods.</p>
+
                         <div className="carousel-btn">
-                        <button className="btn btn-primary">Our Foods</button>
-                        <button className="btn btn-success mx-2">Get Order</button>
-                    </div>
+                            <Link to="/foods"><button className="btn btn-primary">Our Foods</button></Link>
+                            <Link to="/"><button className="btn btn-success mx-2">Get Order</button></Link>
+                        </div>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

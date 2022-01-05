@@ -81,9 +81,7 @@ const Footer = () => {
                     {/* <!-- Section: Text --> */}
                     <section className="mb-4">
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                            repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                            eum harum corrupti dicta, aliquam sequi voluptate quas.
+                            Green, Natural, Healthy Tested food collection and serve to the local customer is our main policy , To care about health we deliver the best food provider all over the world. Stay connected and be healthy.
                         </p>
                     </section>
                     {/* <!-- Section: Text --> */}
@@ -98,16 +96,16 @@ const Footer = () => {
 
                                 <ul className="list-unstyled mb-0">
                                     <li>
-                                        <a href="#!" className="text-white">Link 1</a>
+                                        <a href="#!" className="text-white">Foodies Co</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 2</a>
+                                        <a href="#!" className="text-white">Fresh food</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 3</a>
+                                        <a href="#!" className="text-white">Greenfood</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 4</a>
+                                        <a href="#!" className="text-white">Tested Food</a>
                                     </li>
                                 </ul>
                             </div>
@@ -119,16 +117,16 @@ const Footer = () => {
 
                                 <ul className="list-unstyled mb-0">
                                     <li>
-                                        <a href="#!" className="text-white">Link 1</a>
+                                        <a href="#!" className="text-white">Uttara,Dhaka</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 2</a>
+                                        <a href="#!" className="text-white">Gulshan,Dhaka</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 3</a>
+                                        <a href="#!" className="text-white">Ganginarpar,Mymensing</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 4</a>
+                                        <a href="#!" className="text-white">Townhall,Chittagong</a>
                                     </li>
                                 </ul>
                             </div>
@@ -140,17 +138,17 @@ const Footer = () => {
 
                                 <ul className="list-unstyled mb-0">
                                     <li>
-                                        <a href="#!" className="text-white">Link 1</a>
+                                        <a href="#!" className="text-white">+99738</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 2</a>
+                                        <a href="#!" className="text-white">+123</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 3</a>
+                                        <a href="#!" className="text-white">++8801755</a>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <a href="#!" className="text-white">Link 4</a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                             {/* <!--Grid column--> */}
@@ -161,16 +159,16 @@ const Footer = () => {
 
                                 <ul className="list-unstyled mb-0">
                                     <li>
-                                        <a href="#!" className="text-white">Link 1</a>
+                                        <a href="#!" className="text-white">Facebook Page</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 2</a>
+                                        <a href="#!" className="text-white">Twitter</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 3</a>
+                                        <a href="#!" className="text-white">Email</a>
                                     </li>
                                     <li>
-                                        <a href="#!" className="text-white">Link 4</a>
+                                        <a href="#!" className="text-white">34/b,Uttara,Dhaka,Bangladesh</a>
                                     </li>
                                 </ul>
                             </div>
