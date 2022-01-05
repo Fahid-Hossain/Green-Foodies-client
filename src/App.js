@@ -7,10 +7,10 @@ import AuthProvider from './context/AuthProvider';
 function App() {
   return (
     <div className="App">
-      {/* <AuthProvider> */}
+      <AuthProvider>
       <Home></Home>
       <Footer></Footer>
-      {/* </AuthProvider> */}
+      </AuthProvider>
     </div>
   );
 }
