@@ -78,7 +78,7 @@ const useFirebase = () => {
           .finally(() => setIsLoading(false));
       };
 
-    return {registerUser, emailSignIn, googleSignIn, logOut, user, error, authError, isLoading};
+    return {registerUser, emailSignIn, googleSignIn, logOut, user, error, setError, authError, isLoading};
 };
 
 export default useFirebase;
