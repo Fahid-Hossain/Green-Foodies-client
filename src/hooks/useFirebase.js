@@ -24,8 +24,11 @@ const useFirebase = () => {
           updateProfile(auth.currentUser, {
             displayName: name
           })
-          .then(() => {})
+          .then(() => {
+            
+          })
           .catch((error) => {});
+          window.alert('user created');
           history.push('/');
         })
         .catch((error) => {
