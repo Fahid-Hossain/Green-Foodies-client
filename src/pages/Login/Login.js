@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import {useNavigate, useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 import './Login.css';
 import GoogleButton from 'react-google-button';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { googleSignIn, emailSignIn } = useAuth();
+    const { googleSignIn, emailSignIn, setError } = useAuth();
     const [loginDetails, setLoginDetails] = useState({email: '', password : ''});
     const location = useLocation();
-    const navigate = useNavigate();
+    const history = useHistory();
     const destination = location?.state?.from || '/';
     const handleOnBlur = e =>{
         const field = e.target.name;
@@ -23,11 +23,14 @@ const Login = () => {
         e.preventDefault();
         emailSignIn()
         .then(user => {
-            navigate(destination);
+            history.push(destination);
         })
         .catch(error => {
-            setLoginDetails
+            setError(error.message);
         })
+    };
+    const handleGoogleSignIn = () =>{
+        googleSignIn(location, history);
     };
 
     return (
@@ -37,7 +40,7 @@ const Login = () => {
                     Login page
                 </div>
                 <p>Login using social network</p>
-                <GoogleButton onClick={googleSignIn} className="mx-auto mb-4" />
+                <GoogleButton onClick={handleGoogleSignIn} className="mx-auto mb-4" />
                 <p>Or insert your account information : </p>
                 <form onSubmit={handleLoginSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

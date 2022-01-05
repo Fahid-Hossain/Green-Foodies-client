@@ -1,14 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
+import {useLocation, useHistory} from 'react-router-dom';
 import GoogleButton from 'react-google-button';
 import useAuth from '../../hooks/useAuth';
 import './Register.css';
 
 const Register = () => {
-    const handleOnBlur = (e) =>{
+    const {googleSignIn, registerUser}=useAuth();
+    const [registerDetails, setRegisterDetails] = useState({
+      name : "",
+      email: "",
+      password : "",
+      password2 : ""
+    });
+    const history = useHistory();
+    const location = useLocation();
 
+    const handleGoogleSignIn = () => {
+      googleSignIn(location, history);
+    };
+    const handleOnBlur = (e) =>{
+      const field = e.target.name;
+      const value = e.target.value;
+      const newState = {...registerDetails};
+      newState[field] = value;
+      setRegisterDetails(newState);
+    };
+    const handleRegisterSubmit = (e) =>{
+      e.preventDefault();
+      if(registerDetails.password === registerDetails.password2){
+          registerUser(registerUser.email, registerUser.password, registerUser.name, history);
+      }
     }
-    const {googleSignIn}=useAuth();
+
     return (
         <Container className="my-5">
                 <div className="login-form-container border border-1">
@@ -16,7 +40,7 @@ const Register = () => {
                     Create an account
                 </div>
                 <p>Give the information's</p>
-                <form action="">
+                <form onSubmit={handleRegisterSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control
                     type="text"
@@ -60,7 +84,7 @@ const Register = () => {
                 </Button>
                 </form>
                 <p className="mt-3"><b>Join us using social network</b></p>
-             <GoogleButton onClick={googleSignIn} className="mx-auto mb-4" />
+             <GoogleButton onClick={handleGoogleSignIn} className="mx-auto mb-4" />
             </div>
         </Container>
     );
