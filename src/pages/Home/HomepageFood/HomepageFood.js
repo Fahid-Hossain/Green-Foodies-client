@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row, Spinner } from 'react-bootstrap';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
-import "./Food.css"
 
-const Foods = () => {
+const HomepageFood = () => {
     const [foods, setFoods] = useState([]);
     useEffect(() => {
         fetch("https://fast-caverns-43856.herokuapp.com/foods")
@@ -16,13 +15,13 @@ const Foods = () => {
 
     return (
         <div>
-            <h2 className="text-success my-4 text-uppercase">Our Stock Now {foods.length}</h2>
+            <h2 className="text-success my-4 text-uppercase">Some of our Stock</h2><hr />
             {
                 foods.length === 0 && <Spinner animation="border" variant="success" />
             }
             {
                 foods.length !== 0 && <Row xs={1} md={3} className="g-0">
-                    {foods.map((food, idx) => (
+                    {foods.slice(0,6).map((food, idx) => (
                         <Col>
                             <Card>
                                 <Card.Img className="food-img" variant="top" src={food.image} />
@@ -42,12 +41,14 @@ const Foods = () => {
                                 </Card.Body>
                                     <Link to="/"><Button className="food-order-btn" variant="success" size="lg">Order-now</Button>{' '}</Link>
                             </Card>
+                            
                         </Col>
                     ))}
                 </Row>
             }
+            <Link to="/foods"><Button className="food-order-btn my-5 px-5" variant="secondary" size="lg">See more..</Button>{' '}</Link> 
         </div>
     );
 };
 
-export default Foods;
+export default HomepageFood;
