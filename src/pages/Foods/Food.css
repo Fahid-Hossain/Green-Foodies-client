@@ -1,0 +1,12 @@
+.food-img{
+    width:18rem;
+    height:14rem;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.food-order-btn{
+    margin-bottom: 9px;
+}
+.rating{
+    color:green;
+}
