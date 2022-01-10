@@ -10,8 +10,8 @@ const Register = () => {
     const [registerDetails, setRegisterDetails] = useState({
       name : "",
       email: "",
-      password : "",
-      password2 : ""
+      password: "",
+      password2: ""
     });
     const history = useHistory();
     const location = useLocation();
@@ -28,10 +28,10 @@ const Register = () => {
     };
     const handleRegisterSubmit = (e) =>{
       e.preventDefault();
-      console.log(registerDetails);
-      if(registerDetails.password === registerDetails.password2){
-          registerUser(registerUser.email, registerUser.password, registerUser.name, history);
-      }
+      console.log(registerDetails.email, registerDetails.password);
+    
+          registerUser(registerDetails.email,registerDetails.password,history);
+     
     }
 
     return (

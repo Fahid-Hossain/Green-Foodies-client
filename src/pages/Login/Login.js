@@ -21,7 +21,7 @@ const Login = () => {
 
     const handleLoginSubmit = e =>{
         e.preventDefault();
-        emailSignIn()
+        emailSignIn(loginDetails.email, loginDetails.password)
         .then(user => {
             history.push(destination);
         })

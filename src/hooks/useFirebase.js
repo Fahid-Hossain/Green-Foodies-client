@@ -1,87 +1,103 @@
 import firebaseInitialize from "../Firebase/firebase.init";
-import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword,  updateProfile  } from "firebase/auth";
+import { signInWithEmailAndPassword, GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 firebaseInitialize();
 const useFirebase = () => {
-    const auth = getAuth();
-    const [user, setUser] = useState({});
-    const [error, setError] = useState('');
-    const [authError, setAuthError] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+  const auth = getAuth();
+  const [user, setUser] = useState({});
+  const [error, setError] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-    const googleProvider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
 
-    const registerUser = (email, password, name, history) => {
-      setIsLoading(true);
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          setAuthError('');
-          const newUser = { email, displayName: name };
-          setUser(newUser);
+  const registerUser = (email, password,history) => {
+    // setIsLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        setUser(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage);
+        // ..
+      })
+      .finally(() => {
+        history.push('/');
+      })
 
-          // send name to firebase after creation
-          updateProfile(auth.currentUser, {
-            displayName: name
-          })
-          .then(() => {
-            
-          })
-          .catch((error) => {});
-          window.alert('user created');
-          history.push('/');
-        })
-        .catch((error) => {
-          setAuthError(error.message);
-        })
-        .finally(() => setIsLoading(false));
-    };
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     setAuthError('');
+    //     const newUser = { email, displayName: name };
+    //     setUser(newUser);
 
-    // email sign in 
-    const emailSignIn = (email, password) =>{
-        return signInWithEmailAndPassword(auth, email , password);
-      };
+    //     // send name to firebase after creation
+    //     updateProfile(auth.currentUser, {
+    //       displayName: name
+    //     })
+    //     .then(() => {
 
-    // Google sign in
-    const googleSignIn = (location, history) => {
-        setIsLoading(true);
-        signInWithPopup(auth, googleProvider)
-          .then((result) => {
-            setAuthError('');
-            const destination = location?.state?.from || '/';
-            history.push(destination);
-          }).catch((error) => {
-            setAuthError(error.message);
-          }).finally(() => setIsLoading(false));
-      };
+    //     })
+    //     .catch((error) => {});
+    //     window.alert('user created');
+    //     history.push('/');
+    //   })
+    //   .catch((error) => {
+    //     setAuthError(error.message);
+    //   })
+    //   .finally(() => setIsLoading(false));
+  };
 
-    // Observer user on auth change
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            setUser(user);
-          } 
-          else {
-            setUser({})
-          }
-          setIsLoading(false);
-        });
-      }, [auth]);
+  // email sign in 
+  const emailSignIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    // Logout 
-    const logOut = () => {
-        setIsLoading(true);
-        signOut(auth)
-          .then(() => {
-            setUser({});
-          })
-          .catch((error) => {
-            setError(error.message);
-          })
-          .finally(() => setIsLoading(false));
-      };
+  // Google sign in
+  const googleSignIn = (location, history) => {
+    setIsLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        setAuthError('');
+        const destination = location?.state?.from || '/';
+        history.push(destination);
+      }).catch((error) => {
+        setAuthError(error.message);
+      }).finally(() => setIsLoading(false));
+  };
 
-    return {registerUser, emailSignIn, googleSignIn, logOut, user, error, setError, authError, isLoading};
+  // Observer user on auth change
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      }
+      else {
+        setUser({})
+      }
+      setIsLoading(false);
+    });
+  }, [auth]);
+
+  // Logout 
+  const logOut = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        setUser({});
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  return { registerUser, emailSignIn, googleSignIn, logOut, user, error, setError, authError, isLoading };
 };
 
 export default useFirebase;
